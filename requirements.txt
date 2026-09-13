@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 Flask
 cryptography
 qrcode[pil]
 opencv-python-headless
+=======
+Flask
+cryptography
+qrcode[pil]
+opencv-python-headless
+>>>>>>> ff40bf99db23a5ac752f1a084535e44ac261dce0
 gunicorn
