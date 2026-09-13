@@ -1,0 +1,5 @@
+Flask
+cryptography
+qrcode[pil]
+opencv-python-headless
+gunicorn

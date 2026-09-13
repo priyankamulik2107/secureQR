@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure QR Code Message System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>🔐 Secure QR Code Message System</h1>
+        <h2>Using AES Cryptography</h2>
+
+        <p>
+            Protect your private messages by encrypting them
+            and converting them into secure QR Codes.
+        </p>
+    </div>
+
+
+    <!-- GENERATE QR CODE -->
+
+    <div class="card">
+
+        <h2>✉️ Create Secure QR Code</h2>
+
+        <form method="POST">
+
+            <label>Enter Your Secret Message:</label>
+
+            <textarea
+                name="message"
+                rows="6"
+                placeholder="Type your secret message here..."
+                required
+            ></textarea>
+
+            <button
+                type="submit"
+                name="action"
+                value="generate"
+            >
+                🔐 Generate Secure QR Code
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- SHOW QR CODE -->
+
+    {% if qr_image %}
+
+    <div class="card qr-card">
+
+        <h2>📱 Your Secure QR Code</h2>
+
+        <img
+            src="{{ url_for('static', filename=qr_image) }}"
+            alt="QR Code"
+            class="qr-image"
+        >
+
+        <p class="small-text">
+            Your message has been encrypted successfully.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+
+    <!-- SCAN AND DECRYPT -->
+
+    <div class="card">
+
+        <h2>📷 Scan QR Code to Decrypt</h2>
+
+        <p>
+            Upload the generated QR Code to decrypt your secret message.
+        </p>
+
+        <form
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+            <input
+                type="file"
+                name="qr_file"
+                accept="image/*"
+                required
+            >
+
+            <button
+                type="submit"
+                name="action"
+                value="decrypt"
+            >
+                🔓 Scan & Decrypt QR Code
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- SHOW DECRYPTED MESSAGE -->
+
+    {% if decrypted_message %}
+
+    <div class="decrypted-card">
+
+        <h2>🔓 Decrypted Message</h2>
+
+        <p>
+            {{ decrypted_message }}
+        </p>
+
+    </div>
+
+    {% endif %}
+
+
+    <div class="footer">
+        <p>🔐 Secure • Private • Encrypted</p>
+    </div>
+
+</div>
+
+</body>
+</html>
