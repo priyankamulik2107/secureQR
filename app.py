@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from flask import Flask, render_template, request
 from cryptography.fernet import Fernet
 import qrcode
@@ -208,5 +208,5 @@ def home():
 
 
 if __name__ == "__main__":
->>>>>>> ff40bf99db23a5ac752f1a084535e44ac261dce0
+
     app.run(debug=True)
